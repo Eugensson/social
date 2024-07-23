@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { UserButton } from "@/components/UserButton";
+import { SearchField } from "@/components/SearchField";
 
 export const Navbar = () => {
   return (
@@ -9,7 +10,8 @@ export const Navbar = () => {
         <Link href="/" className="text-2xl font-bold text-primary">
           bugbook
         </Link>
-        <UserButton />
+        <SearchField />
+        <UserButton className="sm:ms-auto" />
       </div>
     </header>
   );

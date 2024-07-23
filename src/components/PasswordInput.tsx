@@ -15,6 +15,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(
           {...props}
           type={showPassword ? "text" : "password"}
           className={cn("pe-10", className)}
+          autoComplete="off"
         />
         <button
           type="button"

@@ -50,7 +50,12 @@ export const LoginForm = () => {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="Username" {...field} className="rounded" />
+                <Input
+                  placeholder="Username"
+                  {...field}
+                  className="rounded"
+                  autoComplete="off"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -67,6 +72,7 @@ export const LoginForm = () => {
                   placeholder="Password"
                   {...field}
                   className="rounded"
+                  autoComplete="off"
                 />
               </FormControl>
               <FormMessage />

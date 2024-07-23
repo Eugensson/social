@@ -50,7 +50,12 @@ export const SignUpForm = () => {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="Username" {...field} className="rounded" />
+                <Input
+                  placeholder="Username"
+                  {...field}
+                  className="rounded"
+                  autoComplete="off"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -68,6 +73,7 @@ export const SignUpForm = () => {
                   type="email"
                   {...field}
                   className="rounded"
+                  autoComplete="off"
                 />
               </FormControl>
               <FormMessage />
@@ -85,6 +91,7 @@ export const SignUpForm = () => {
                   placeholder="Password"
                   {...field}
                   className="rounded"
+                  autoComplete="off"
                 />
               </FormControl>
               <FormMessage />
