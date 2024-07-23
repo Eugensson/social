@@ -1,1 +1,1 @@
-# social
+npm i --legacy-peer-deps
