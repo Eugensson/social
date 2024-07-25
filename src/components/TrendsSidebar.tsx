@@ -4,11 +4,11 @@ import { Loader2 } from "lucide-react";
 import { unstable_cache } from "next/cache";
 
 import prisma from "@/lib/prisma";
-import { Button } from "./ui/button";
 import { validateRequest } from "@/auth";
 import { UserAvatar } from "./UserAvatar";
 import { formatNumber } from "@/lib/utils";
-import { userDataSelect } from "@/lib/types";
+import { FollowButton } from "./FollowButton";
+import { getUserDataSelect } from "@/lib/types";
 
 export default function TrendsSidebar() {
   return (
@@ -31,8 +31,13 @@ async function WhoToFollow() {
       NOT: {
         id: user.id,
       },
+      followers: {
+        none: {
+          followerId: user.id,
+        },
+      },
     },
-    select: userDataSelect,
+    select: getUserDataSelect(user.id),
     take: 5,
   });
 
@@ -45,7 +50,7 @@ async function WhoToFollow() {
             href={`/users/${user.username}`}
             className="flex items-center gap-3"
           >
-            <UserAvatar avatarUrl={user.avaterUrl} className="flex-none" />
+            <UserAvatar avatarUrl={user.avatarUrl} className="flex-none" />
             <div>
               <p className="line-clamp-1 break-all font-semibold hover:underline">
                 {user.displayName}
@@ -55,7 +60,15 @@ async function WhoToFollow() {
               </p>
             </div>
           </Link>
-          <Button>Follow</Button>
+          <FollowButton
+            userId={user.id}
+            initialState={{
+              followers: user._count.followers,
+              isFollowedByUser: user.followers.some(
+                ({ followerId }) => followerId === user.id,
+              ),
+            }}
+          />
         </div>
       ))}
     </div>

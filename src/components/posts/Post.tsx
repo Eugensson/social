@@ -20,7 +20,7 @@ export const Post = ({ post }: PostProps) => {
       <div className="flex justify-between gap-3">
         <div className="flex flex-wrap gap-3">
           <Link href={`/user/${post.user.username}`}>
-            <UserAvatar avatarUrl={post.user.avaterUrl} />
+            <UserAvatar avatarUrl={post.user.avatarUrl} />
           </Link>
           <div>
             <Link
