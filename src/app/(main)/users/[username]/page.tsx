@@ -12,13 +12,13 @@ import prisma from "@/lib/prisma";
 import { validateRequest } from "@/auth";
 import { formatNumber } from "@/lib/utils";
 
+import { Linkify } from "@/components/linkify";
 import { UserAvatar } from "@/components/user-avatar";
 import { FollowButton } from "@/components/follow-button";
 import { TrendsSidebar } from "@/components/trends-sidebar";
 import { FollowerCount } from "@/components/follower-count";
 import { UserPosts } from "@/app/(main)/users/[username]/user-posts";
-
-import { Button } from "@/components/ui/button";
+import { EditProfileButton } from "@/app/(main)/users/[username]/edit-profile-button";
 
 interface ProfilePageProps {
     params: {
@@ -128,7 +128,7 @@ export const UserProfile = async (
                     </div>
                 </div>
                 {user.id === loggedInUserId
-                    ? <Button>Edit profile</Button>
+                    ? <EditProfileButton user={user} />
                     : <FollowButton
                         userId={user.id}
                         initialState={followerInfo}
@@ -138,9 +138,11 @@ export const UserProfile = async (
             {user.bio &&
                 <>
                     <hr />
-                    <div className="overflow-hidden whitespace-pre-line break-words">
-                        {user.bio}
-                    </div>
+                    <Linkify>
+                        <div className="overflow-hidden whitespace-pre-line break-words">
+                            {user.bio}
+                        </div>
+                    </Linkify>
                 </>
             }
         </div>

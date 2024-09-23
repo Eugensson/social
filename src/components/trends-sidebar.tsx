@@ -10,6 +10,7 @@ import { getUserDataSelect } from "@/lib/types";
 
 import {UserAvatar} from "@/components/user-avatar";
 import { FollowButton } from "@/components/follow-button";
+import { UserTooltip } from "./user-tooltip";
 
 export const TrendsSidebar = () => {
   return (
@@ -47,20 +48,22 @@ const WhoToFollow = async() => {
       <div className="text-xl font-bold">Who to follow</div>
       {usersToFollow.map((user) => (
         <div key={user.id} className="flex items-center justify-between gap-3">
-          <Link
+          <UserTooltip user={user}>
+            <Link
               href={`/users/${user.username}`}
               className="flex items-center gap-3"
-          >
-            <UserAvatar avatarUrl={user.avatarUrl} className="flex-none" />
-            <div>
-              <p className="line-clamp-1 break-all font-semibold hover:underline">
+            >
+              <UserAvatar avatarUrl={user.avatarUrl} className="flex-none" />
+              <div>
+                <p className="line-clamp-1 break-all font-semibold hover:underline">
                   {user.displayName}
-              </p>
-              <p className="line-clamp-1 break-all text-muted-foreground">
+                </p>
+                <p className="line-clamp-1 break-all text-muted-foreground">
                   @{user.username}
-              </p>
-            </div>
-          </Link>
+                </p>
+              </div>
+            </Link>
+          </UserTooltip>
           <FollowButton
             userId={user.id}
             initialState={{
