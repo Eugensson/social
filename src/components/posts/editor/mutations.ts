@@ -20,10 +20,10 @@ export const useSubmitPostMutation = () => {
   const { user } = useSession();
 
   const mutation = useMutation({
-    mutationFn: submitPost,    
+    mutationFn: submitPost,
     onSuccess: async (newPost) => {
       const queryFilter = {
-        queryKey: ["post-feed", "for-you"],
+        queryKey: ["post-feed"],
         predicate(query) {
           return (
             query.queryKey.includes("for-you") ||
