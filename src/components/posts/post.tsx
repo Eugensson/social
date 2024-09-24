@@ -13,6 +13,7 @@ import {Linkify} from "@/components/linkify";
 import { UserAvatar } from "@/components/user-avatar";
 import { UserTooltip } from "@/components/user-tooltip";
 import { LikeButton } from "@/components/posts/like-button";
+import { BookmarkButton } from "@/components/posts/bookmark-button";
 import { PostMoreButton } from "@/components/posts/post-more-button";
 
 interface PostProps {
@@ -60,13 +61,21 @@ export const Post:React.FC<PostProps> = ({ post }) => {
         <MediaPreviewList attachments={post.attachments} />
       )}
       <hr className="text-muted-foreground"/>
-      <LikeButton
-        postId={post.id}
-        initialState={{
-          likes: post._count.likes,
-          isLikedByUser: post.likes.some(like => like.userId === user.id)
-        }}
-      />
+      <div className="flex justify-between items-center gap-5">
+        <LikeButton
+          postId={post.id}
+          initialState={{
+            likes: post._count.likes,
+            isLikedByUser: post.likes.some(like => like.userId === user.id)
+          }}
+        />
+        <BookmarkButton
+          postId={post.id}
+          initialState={{
+            isBookmarkedByUser: post.bookmarks.some(bookmark => bookmark.userId === user.id)
+          }}
+        />
+      </div>
     </article>
   );
 }
