@@ -39,6 +39,7 @@ export const Post:React.FC<PostProps> = ({ post }) => {
             <Link
               href={`/posts/${post.id}`}
               className="block text-sm text-muted-foreground hover:underline"
+              suppressHydrationWarning
             >
               {formatRelativeDate(post.createdAt)}
             </Link>
