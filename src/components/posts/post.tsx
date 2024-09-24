@@ -11,8 +11,9 @@ import { useSession } from "@/app/(main)/session-provider";
 
 import {Linkify} from "@/components/linkify";
 import { UserAvatar } from "@/components/user-avatar";
-import { PostMoreButton } from "@/components/posts/post-more-button";
 import { UserTooltip } from "@/components/user-tooltip";
+import { LikeButton } from "@/components/posts/like-button";
+import { PostMoreButton } from "@/components/posts/post-more-button";
 
 interface PostProps {
   post: PostData;
@@ -58,6 +59,14 @@ export const Post:React.FC<PostProps> = ({ post }) => {
       {!!post.attachments.length && (
         <MediaPreviewList attachments={post.attachments} />
       )}
+      <hr className="text-muted-foreground"/>
+      <LikeButton
+        postId={post.id}
+        initialState={{
+          likes: post._count.likes,
+          isLikedByUser: post.likes.some(like => like.userId === user.id)
+        }}
+      />
     </article>
   );
 }
