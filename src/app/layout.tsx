@@ -12,6 +12,7 @@ import {ReactQueryProvider} from "@/app/react-query-provider";
 
 import "./globals.css";
 
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -23,10 +24,10 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | bugbook",
-    default: "bugbook",
+    template: "%s | ecobook",
+    default: "ecobook",
   },
-  description: "The social media app for powernerds",
+  description: "The social media app for ecologists",
 };
 
 export default function RootLayout({
