@@ -15,7 +15,7 @@ const SignUp = () => {
         <div className="w-full max-w-[64rem] h-full max-h-[40rem] flex overflow-hidden rounded-2xl shadow-2xl bg-card"> 
             <div className="md:w-1/2 w-full space-y-10 overflow-y-auto p-10">
                 <div className="space-y-1 text-center">
-                    <h1 className="text-3xl font-bold">Sign up to bugbook</h1>
+                    <h1 className="text-3xl font-bold">Sign up to ecobook</h1>
                     <p className="text-muted-foreground">A place where even <span className="italic">you</span> can find a friend.</p>
                 </div>
                 <div className="space-y-5">
